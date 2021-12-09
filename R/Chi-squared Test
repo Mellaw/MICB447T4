@@ -1,0 +1,5 @@
+# Import metadata csv file
+infant_metadata = read.csv("infant_metadata.csv")
+
+# Chi-square test for metadata categories of interest (feed and eczema_inf)
+chisq.test(infant_metadata$feed, infant_metadata$eczema_inf)
