@@ -1,3 +1,6 @@
+#Additional commands to stratify samples by AD status and calculate alpha and beta diversity in QIIME2
+#Date last modified: Dec 19 2021
+
 # To filter for infant observations 
 qiime feature-table filter-samples \
   --i-table ./dada2_table.qza \
