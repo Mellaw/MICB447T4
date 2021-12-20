@@ -1,3 +1,6 @@
+#Chi-squared test
+#Date last modified: Dec 19, 2021
+
 # Import metadata csv file
 infant_metadata = read.csv("infant_metadata.csv")
 
