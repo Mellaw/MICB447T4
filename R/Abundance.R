@@ -1,3 +1,14 @@
+#Calculating relative abundance and differential abundance of genera
+#Date last modified: Dec. 19, 2021
+#Note on abbreviations: AD = Atopic dermatitis 
+#The data processing steps referenced below are as follows:
+#Step 1: Filter by sequencing depth
+#Step 2: Filter by metadata
+#Step 3: Rarefy (not needed to caluclate relative/differential abundance)
+#Step 4: Calculate relative abundance
+#Step 5: Remove low abundant features
+#Step 6: Set taxanomic rank for analysis
+
 # libraries ---------------------------------------------------------------
 library(tidyverse)
 library(cluster)
@@ -36,7 +47,7 @@ physeq = merge_phyloseq(biom, metadata, tree)
 colnames(tax_table(physeq)) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 rank_names(physeq) 
 
-
+#Step 1
 #Check sequencing depth
 depth <- sample_sums(physeq)
 unique(depth)
@@ -46,7 +57,7 @@ count(sample_sums(physeq) >= 10000)
 min_10k <- prune_samples(sample_sums(physeq) >= 10000, physeq)
 
 
-#Subset samples to metadata categories of interest
+#Step 2: subset samples to metadata categories of interest
 #remove samples with no data for feed and eczema_inf
 ad <-  c("no", "yes")
 
@@ -60,6 +71,7 @@ formula_sub <- subset_samples(min_10k,life_stage == "Infant" &
 
 
 # Common variables for differential & relative abundance ------------------
+#Step 5
 ab_tax <- function (physeq_ob, rank) {
   total_counts <- taxa_sums(physeq_ob)
   relative_abundance <- calculate_relative_abundance(total_counts)
@@ -70,6 +82,7 @@ ab_tax <- function (physeq_ob, rank) {
   ab_genera <- prune_samples(sample_sums(abundant_genera) > 0, abundant_genera)
 }
 
+#Step 6
 breast_phy <- ab_tax(breast_sub, "Genus")
 formula_phy <- ab_tax(formula_sub, "Genus")
 
