@@ -1,3 +1,6 @@
+#Plotting weighted UniFrac PCoA
+#Date last modified: Dec 19 2021
+
 # libraries ---------------------------------------------------------------
 library(phyloseq)
 library(DESeq2)
