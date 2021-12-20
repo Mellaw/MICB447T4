@@ -1,3 +1,6 @@
+#Data quality control and diversity analysis in QIIME2
+#Date last modified: Dec 19, 2021
+
 #Load data 
 #link relevant files to the team folder using symbolic links
 ln -s /mnt/datasets/project_2/infant
