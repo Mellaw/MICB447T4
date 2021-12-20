@@ -31,7 +31,7 @@ qiime dada2 denoise-single \
   --o-denoising-stats ./dada2_stats.qza
 
 
-#FILTER FOR DESIRED METADATA CATEGORIES (check w Karen from her code)
+#FILTER FOR DESIRED METADATA CATEGORIES
 qiime feature-table filter-samples \
   --i-table ./dada2_table.qza \
   --m-metadata-file /data/t4_project2/infant/infant_metadata.txt \
@@ -146,7 +146,6 @@ qiime taxa barplot \
   --i-taxonomy ./taxonomy.qza \
   --m-metadata-file /data/t4_project2/infant/infant_metadata.txt \
   --o-visualization ./taxa_barplot.qzv
-
 
 #Export infant filtered feature tables as .biom file
 qiime tools export \
