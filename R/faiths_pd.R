@@ -1,3 +1,7 @@
+#Calculating and plotting Faith's phylogentic distance
+#Date last modified: Dec 19 2019
+
+#libraries
 library(tidyverse)
 library(ggplot2)
 library(ggsignif)
